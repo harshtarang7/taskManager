@@ -1,3 +1,4 @@
+import { DateTimeHelper } from "src/common/utils/date.time.helper";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('users')
@@ -15,9 +16,9 @@ export class UserEntity{
     password:string;
 
     @Column({type:'date',name:'created_at',nullable:false})
-    created_at:string;
+    created_at = DateTimeHelper.getCurrentDateTime();
    
     @Column({type:'date',name:'created_at',nullable:false})
-    updated_at:string;
+    updated_at = DateTimeHelper.getCurrentDateTime();
 
 }
