@@ -1,5 +1,6 @@
 import { DateTimeHelper } from "src/common/utils/date.time.helper";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import * as bcrypt from 'bcrypt';
 
 @Entity('users')
 export class UserEntity{
@@ -15,10 +16,10 @@ export class UserEntity{
     @Column({type:'varchar',name:'password',nullable:false})
     password:string;
 
-    @Column({type:'date',name:'created_at',nullable:false})
-    created_at = DateTimeHelper.getCurrentDateTime();
+    @Column({type:'timestamp',nullable:false})
+    created_at :string= DateTimeHelper.getCurrentDateTime();
    
-    @Column({type:'date',name:'created_at',nullable:false})
-    updated_at = DateTimeHelper.getCurrentDateTime();
+    @Column({type:'timestamp',nullable:false})
+    updated_at :string= DateTimeHelper.getCurrentDateTime();
 
 }

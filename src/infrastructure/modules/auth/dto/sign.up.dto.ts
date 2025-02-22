@@ -5,7 +5,7 @@ export class SignupDto {
     email: string;
   
     @IsString()
-    useraname: string;
+    username: string;
 
     @IsString()
     @MinLength(6)
