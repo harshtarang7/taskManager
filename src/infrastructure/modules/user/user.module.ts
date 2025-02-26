@@ -5,10 +5,12 @@ import {jwtModule} from '../jwt/jwt.module'
 import { UserService } from "./user.service";
 import { UserController } from "./user.controller";
 import { ResponseService } from "src/common/response-manager/response.manager";
+import { LoggerModule } from "src/common/utils/logger/logger.module";
 @Module({
     imports:[
         TypeOrmModule.forFeature([UserEntity]),
-        jwtModule
+        jwtModule,
+        LoggerModule
     ],
     controllers:[UserController],
     providers:[UserService, ResponseService],

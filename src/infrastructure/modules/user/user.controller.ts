@@ -4,7 +4,6 @@ import { ApiResponse, ResponseService } from 'src/common/response-manager/respon
 import { UserEntity } from 'src/infrastructure/models/user/user.entity';
 import { JwtAuthGuard } from '../jwt/jwt.auth.guard';
 
-@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController{
     constructor(

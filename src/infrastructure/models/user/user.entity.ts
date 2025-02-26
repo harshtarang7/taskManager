@@ -1,6 +1,7 @@
 import { DateTimeHelper } from "src/common/utils/date.time.helper";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import * as bcrypt from 'bcrypt';
+import { Exclude } from "class-transformer";
 
 @Entity('users')
 export class UserEntity{
@@ -14,6 +15,7 @@ export class UserEntity{
     email:string;
 
     @Column({type:'varchar',name:'password',nullable:false})
+    @Exclude()
     password:string;
 
     @Column({type:'timestamp',nullable:false})

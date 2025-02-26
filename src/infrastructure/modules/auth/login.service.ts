@@ -9,6 +9,7 @@ import * as bcrypt from 'bcrypt';
 import { LoginDto } from "./dto/login.dto";
 import { loginResponseDTO } from "./dto/login.response.dt";
 import { AuthService } from "../jwt/jwt.service";
+import { instanceToPlain } from "class-transformer";
 
 @Injectable()
 export class LoginService{
@@ -35,7 +36,7 @@ export class LoginService{
 
             const savedUser = await this.userRepository.save(newUser);
 
-            return savedUser;
+            return instanceToPlain(savedUser) as UserEntity;
 
         } catch (error) {
             console.log(error)
@@ -58,9 +59,12 @@ export class LoginService{
                 throw new UnauthorizedException("Invalid password");
             }
 
-            const token = await this.jwtService.generateToken(find_user)
+            const token: string = (await this.jwtService.generateToken({ id: find_user.id, email: find_user.email })).access_token;
+            
+            const { password, ...secureUser } = instanceToPlain(find_user) as UserEntity;
+
         
-            return { ...find_user, token: token.access_token };
+            return { ...secureUser, token } as loginResponseDTO; 
         } catch (error) {
             console.error(error);
             throw error;
