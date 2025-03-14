@@ -12,6 +12,7 @@ import { LoggerModule } from './common/utils/logger/logger.module';
 import { LoggerService } from './common/utils/logger/logger.service';
 import { TypeOrmLogger } from './common/utils/logger/typeorm.logger';
 import { LoggerMiddlerware } from './common/utils/logger/logger.middleware';
+import { TaskModule } from './infrastructure/modules/tasks/task.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { LoggerMiddlerware } from './common/utils/logger/logger.middleware';
     LoginModule,
     UserModule,
     LoggerModule,
+    TaskModule,
    
   ],
   controllers: [AppController],

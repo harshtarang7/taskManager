@@ -17,7 +17,7 @@ export class ResponseInterceptor implements NestInterceptor {
   ): Observable<any> | Promise<Observable<any>> {
     return next.handle().pipe(
       map((data) => {
-        // If already formatted, return as is
+        // If already formatted, return as it is
         if (data && data.success !== undefined) {
           return data;
         }
